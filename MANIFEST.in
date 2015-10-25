@@ -1,0 +1,2 @@
+recursive-include tordoc/static *
+recursive-include tordoc/template *
