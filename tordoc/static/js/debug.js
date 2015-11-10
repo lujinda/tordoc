@@ -64,10 +64,16 @@ function debug_controller($scope, $http){
             headers['Content-Length'] = data.length;
             options.data = data;
         }
+        var request_options = {
+            method: options.method,
+            url: options.url,
+            headers: options.headers,
+            data: options.data,
+        };
         if (method == 'GET'){
-            options.url += '?' + urlencode(data);
+            request_options.url += '?' + urlencode(request_options.data);
         }
-        $http(options).success(callback).error(callback);
+        $http(request_options).success(callback).error(callback);
     }
     function init(){
         $scope.request_content_type = 'json';

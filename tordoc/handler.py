@@ -11,7 +11,7 @@ import os
 from urlparse import urljoin
 from .utils import generate_abspath
 
-class DocPaserError(Exception):
+class DocParserError(Exception):
     pass
 
 class DocPaser(object):
@@ -52,7 +52,7 @@ class DocPaser(object):
 
     def parse_line(self, line):
         if ':' not in line:
-            raise DocPaserError
+            raise DocParserError
 
         return [item.strip() for item in line.split(':', 1)]
 
@@ -66,7 +66,7 @@ def parse_doc(raw_doc):
     doc_parser = DocPaser(raw_doc)
     try:
         return doc_parser.parse()
-    except DocPaserError:
+    except DocParserError:
         return None
 
 class TorDebugHandler(RequestHandler):
