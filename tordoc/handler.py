@@ -71,16 +71,13 @@ def parse_doc(raw_doc):
 
 class TorDebugHandler(RequestHandler):
     def get(self):
-        if not self.settings.get('debug', False):
-            raise HTTPError(400, 'must debug is True')
-
         api_docs = self.generate_api_docs()
         api_module_tree = api_docs.keys()
         self.render('doc.html', api_docs = api_docs, 
                 api_module_tree = api_module_tree, 
                 db_tables = self.db_tables)
 
-    def initialize(self, static_url_prefix, public_response_params = None, api_description = None, tables = None):
+    def initialize(self, static_url_prefix, public_response_params = None, api_description = None, tables = None, **kwargs):
         self.static_url_prefix = static_url_prefix
         self.public_response_params = public_response_params or {}
         self.api_description = api_description

@@ -11,7 +11,7 @@ setup(
         include_package_data=True,
         name = 'tordoc',
         author = 'tuxpy',
-        version = '0.0.1',
+        version = '0.0.4',
         packages = [
             'tordoc', 
             ],
